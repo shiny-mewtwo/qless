@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Light mode colors */
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(222.2 84% 4.9%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(222.2 84% 4.9%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(222.2 84% 4.9%);
+  --color-primary: hsl(222.2 47.4% 11.2%);
+  --color-primary-foreground: hsl(210 40% 98%);
+  --color-secondary: hsl(210 40% 96.1%);
+  --color-secondary-foreground: hsl(222.2 47.4% 11.2%);
+  --color-muted: hsl(210 40% 96.1%);
+  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+  --color-accent: hsl(210 40% 96.1%);
+  --color-accent-foreground: hsl(222.2 47.4% 11.2%);
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(210 40% 98%);
+  --color-border: hsl(214.3 31.8% 91.4%);
+  --color-input: hsl(214.3 31.8% 91.4%);
+  --color-ring: hsl(222.2 84% 4.9%);
+  --radius: 0.5rem;
+}
+
+/* Base styles */
+html {
+  /* Prevent iOS text size adjustment */
+  -webkit-text-size-adjust: 100%;
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  background-color: var(--color-background);
+}
+
+html.dark {
+  background-color: hsl(222.2 47.4% 11.2%);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Prevent pull-to-refresh on mobile */
+  overscroll-behavior: none;
+  /* Prevent text selection during game */
+  -webkit-user-select: none;
+  user-select: none;
+  /* Prevent touch callouts on iOS */
+  -webkit-touch-callout: none;
+  /* Prevent tap highlight */
+  -webkit-tap-highlight-color: transparent;
+  /* Safe area padding for notched devices */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Dark mode body background - matches the gradient edge color */
+.dark body {
+  background-color: hsl(222.2 47.4% 11.2%);
+}
+
+/* Prevent zoom on input focus in iOS */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* Smooth touch scrolling */
+.overflow-auto,
+.overflow-x-auto,
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile-specific grid sizing */
+@media (max-width: 480px) {
+  :root {
+    --cell-size: 36px;
+    --die-size: 36px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 640px) {
+  :root {
+    --cell-size: 40px;
+    --die-size: 40px;
+  }
+}
+
+@media (min-width: 641px) {
+  :root {
+    --cell-size: 48px;
+    --die-size: 48px;
+  }
+}
+
+/* Fallback values */
+:root {
+  --cell-size: 48px;
+  --die-size: 48px;
+}
